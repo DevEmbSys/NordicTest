@@ -76,3 +76,12 @@
 .\objects\main.o: .\components\ble\nrf_ble_gatt\nrf_ble_gatt.h
 .\objects\main.o: .\components\ble\nrf_ble_qwr\nrf_ble_qwr.h
 .\objects\main.o: .\components\libraries\pwr_mgmt\nrf_pwr_mgmt.h
+.\objects\main.o: .\integration\nrfx\legacy\nrf_drv_saadc.h
+.\objects\main.o: .\modules\nrfx\drivers\include\nrfx_saadc.h
+.\objects\main.o: .\modules\nrfx\hal/nrf_saadc.h
+.\objects\main.o: .\integration\nrfx\legacy\nrf_drv_ppi.h
+.\objects\main.o: .\modules\nrfx\drivers\include\nrfx_ppi.h
+.\objects\main.o: .\modules\nrfx\hal/nrf_ppi.h
+.\objects\main.o: .\integration\nrfx\legacy\nrf_drv_timer.h
+.\objects\main.o: .\modules\nrfx\drivers\include\nrfx_timer.h
+.\objects\main.o: .\modules\nrfx\hal/nrf_timer.h
