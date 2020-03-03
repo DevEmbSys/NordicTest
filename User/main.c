@@ -83,7 +83,7 @@
 #define APP_BLE_OBSERVER_PRIO           3                                       /**< Application's BLE observer priority. You shouldn't need to modify this value. */
 #define APP_BLE_CONN_CFG_TAG            1                                       /**< A tag identifying the SoftDevice BLE configuration. */
 
-#define APP_ADV_INTERVAL                64                                      /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
+#define APP_ADV_INTERVAL                800                                      /**< The advertising interval ( 60 in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_DURATION                BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED   /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
 
 
@@ -564,10 +564,20 @@ static void power_management_init(void)
  */
 static void idle_state_handle(void)
 {
-//    if (NRF_LOG_PROCESS() == false)
-//    {
-//        nrf_pwr_mgmt_run();
-//    }
+		nrf_gpio_pin_set(3);
+		nrf_drv_saadc_sample();
+		//nrf_gpio_pin_clear(3);
+	
+		if(m_buffer_pool[0][0] < 0x300)
+		{
+			nrf_gpio_pin_set(7);
+		}
+		else
+		{
+			nrf_gpio_pin_clear(7);
+		}
+	
+    //nrf_pwr_mgmt_run();
 }
 
 
@@ -628,12 +638,15 @@ int main(void)
     advertising_start();
 	
 		saadc_init();
+	
+		nrf_gpio_cfg_output(3);
+		nrf_gpio_cfg_output(7);
+		nrf_gpio_cfg_output(8);
 
     // Enter main loop.
     for (;;)
     {
         idle_state_handle();
-				nrf_drv_saadc_sample();
     }
 }
 
