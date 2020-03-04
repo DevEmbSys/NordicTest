@@ -564,20 +564,32 @@ static void power_management_init(void)
  */
 static void idle_state_handle(void)
 {
+		ble_gatts_hvx_params_t params;
+		uint16_t len = sizeof(m_buffer_pool[0][0]);
 		nrf_gpio_pin_set(3);
+		NRFX_DELAY_US(10000);
 		nrf_drv_saadc_sample();
 		//nrf_gpio_pin_clear(3);
 	
-		if(m_buffer_pool[0][0] < 0x300)
-		{
-			nrf_gpio_pin_set(7);
-		}
-		else
-		{
-			nrf_gpio_pin_clear(7);
-		}
+//		if(m_buffer_pool[0][0] < 0x300)
+//		{
+//			nrf_gpio_pin_set(7);
+//		}
+//		else
+//		{
+//			nrf_gpio_pin_clear(7);
+//		}
+
+    memset(&params, 0, sizeof(params));
+    params.type   = BLE_GATT_HVX_NOTIFICATION;
+    params.handle = m_lbs.button_char_handles.value_handle;
+    params.p_data = (uint8_t*)&m_buffer_pool[0][0];
+    params.p_len  = &len;
+
+    sd_ble_gatts_hvx(m_conn_handle, &params);
+
 	
-    //nrf_pwr_mgmt_run();
+    nrf_pwr_mgmt_run();
 }
 
 
