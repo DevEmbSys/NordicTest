@@ -45,7 +45,7 @@
 #include "nordic_common.h"
 #include "nrf_error.h"
 #include "ble_dfu.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_sdh_soc.h"
 
 #if (!NRF_DFU_BLE_BUTTONLESS_SUPPORTS_BONDS)
@@ -92,8 +92,8 @@ static uint32_t set_adv_name(nrf_dfu_adv_name_t * p_adv_name)
     }
     else if (err_code == NRF_ERROR_FORBIDDEN)
     {
-        NRF_LOG_ERROR("The bootloader has write protected its settings page. This prohibits setting the advertising name. "\
-                      "The bootloader must be compiled with NRF_BL_SETTINGS_PAGE_PROTECT=0 to allow setting the advertising name.");
+//        NRF_LOG_ERROR("The bootloader has write protected its settings page. This prohibits setting the advertising name. "\
+//                      "The bootloader must be compiled with NRF_BL_SETTINGS_PAGE_PROTECT=0 to allow setting the advertising name.");
     }
 
     return err_code;

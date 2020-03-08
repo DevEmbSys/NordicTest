@@ -73,6 +73,12 @@
 #include "nrf_drv_ppi.h"
 #include "nrf_drv_timer.h"
 
+#include "ble_dfu.h"
+
+#include "nrf_dfu_ble_svci_bond_sharing.h"
+#include "nrf_svci_async_function.h"
+#include "nrf_svci_async_handler.h"
+
 #define ADVERTISING_LED                 BSP_BOARD_LED_0                         /**< Is on when device is advertising. */
 #define CONNECTED_LED                   BSP_BOARD_LED_1                         /**< Is on when device has connected. */
 #define LEDBUTTON_LED                   BSP_BOARD_LED_2                         /**< LED to be toggled with the help of the LED Button Service. */
@@ -300,6 +306,7 @@ static void services_init(void)
     uint32_t         err_code;
     ble_lbs_init_t     init     = {0};
     nrf_ble_qwr_init_t qwr_init = {0};
+		ble_dfu_buttonless_init_t dfus_init = {0};
 
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
@@ -311,6 +318,9 @@ static void services_init(void)
     init.led_write_handler = led_write_handler;
 
     err_code = ble_lbs_init(&m_lbs, &init);
+    APP_ERROR_CHECK(err_code);
+		
+		err_code = ble_dfu_buttonless_init(&dfus_init);
     APP_ERROR_CHECK(err_code);
 }
 

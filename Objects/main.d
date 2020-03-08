@@ -85,3 +85,10 @@
 .\objects\main.o: .\integration\nrfx\legacy\nrf_drv_timer.h
 .\objects\main.o: .\modules\nrfx\drivers\include\nrfx_timer.h
 .\objects\main.o: .\modules\nrfx\hal/nrf_timer.h
+.\objects\main.o: .\components\ble\ble_services\ble_dfu\ble_dfu.h
+.\objects\main.o: .\components\libraries\bootloader\ble_dfu\nrf_dfu_ble_svci_bond_sharing.h
+.\objects\main.o: .\components\libraries\svc\nrf_svci.h
+.\objects\main.o: .\components\libraries\svc\nrf_svci_async_function.h
+.\objects\main.o: .\components\libraries\svc\nrf_svci_async_handler.h
+.\objects\main.o: .\components\libraries\svc\nrf_svc_function.h
+.\objects\main.o: .\components\libraries\bootloader\dfu\nrf_dfu_types.h

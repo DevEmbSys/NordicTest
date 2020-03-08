@@ -52,7 +52,7 @@
           <OutputName>Test</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -274,7 +274,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x26000</StartAddress>
-                <Size>0xda000</Size>
+                <Size>0x52000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -334,9 +334,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>APP_TIMER_V2 APP_TIMER_V2_RTC1_ENABLED CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT __HEAP_SIZE=8192 __STACK_SIZE=8192</Define>
+              <Define>APP_TIMER_V2 APP_TIMER_V2_RTC1_ENABLED CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_DFU_SVCI_ENABLED NRF_DFU_TRANSPORT_BLE=1  NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT __HEAP_SIZE=8192 __STACK_SIZE=8192</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\components\ble\common;.\components\ble\nrf_ble_gatt;.\components\ble\nrf_ble_qwr;.\components\libraries\util;.\config;.\components\softdevice\s132\headers;.\components\softdevice\common;.\components\libraries\experimental_section_vars;.\integration\nrfx;.\components\libraries\strerror;.\components\libraries\atomic;.\components\libraries\timer;.\components\libraries\log;.\components\libraries\log\src;.\components\libraries\atomic_flags;.\components\libraries\atomic_fifo;.\components\libraries\sortlist;.\components\softdevice\s132\headers\nrf52;.\components\libraries\memobj;.\components\libraries\balloc;.\external\fprintf;.\components\libraries\ringbuf;.\integration\nrfx\legacy;.\components\boards;.\components\libraries\button;.\components\ble\ble_services\ble_lbs;.\components\libraries\pwr_mgmt;.\components\libraries\mutex;.\components\libraries\delay;.\modules\nrfx;.\modules\nrfx\hal;.\modules\nrfx\drivers\include;.\modules\nrfx\drivers\src</IncludePath>
+              <IncludePath>.\User;.\components\ble\common;.\components\ble\nrf_ble_gatt;.\components\ble\nrf_ble_qwr;.\components\ble\ble_services\ble_dfu;.\components\libraries\util;.\config;.\components\softdevice\s132\headers;.\components\softdevice\common;.\components\libraries\experimental_section_vars;.\integration\nrfx;.\components\libraries\strerror;.\components\libraries\atomic;.\components\libraries\timer;.\components\libraries\log;.\components\libraries\log\src;.\components\libraries\atomic_flags;.\components\libraries\atomic_fifo;.\components\libraries\sortlist;.\components\softdevice\s132\headers\nrf52;.\components\libraries\memobj;.\components\libraries\balloc;.\external\fprintf;.\components\libraries\ringbuf;.\integration\nrfx\legacy;.\components\boards;.\components\libraries\button;.\components\ble\ble_services\ble_lbs;.\components\libraries\pwr_mgmt;.\components\libraries\mutex;.\components\libraries\delay;.\modules\nrfx;.\modules\nrfx\hal;.\modules\nrfx\drivers\include;.\modules\nrfx\drivers\src;.\components\libraries\bootloader\ble_dfu;.\components\libraries\svc;.\components\libraries\bootloader\dfu;.\components\libraries\bootloader;.\components\ble\peer_manager</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -594,6 +594,36 @@
               <FileName>app_button.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\components\libraries\button\app_button.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>nRF_DFU</GroupName>
+          <Files>
+            <File>
+              <FileName>ble_dfu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\components\ble\ble_services\ble_dfu\ble_dfu.c</FilePath>
+            </File>
+            <File>
+              <FileName>ble_dfu_bonded.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\components\ble\ble_services\ble_dfu\ble_dfu_bonded.c</FilePath>
+            </File>
+            <File>
+              <FileName>ble_dfu_unbonded.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\components\ble\ble_services\ble_dfu\ble_dfu_unbonded.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>nRF_SVC</GroupName>
+          <Files>
+            <File>
+              <FileName>nrf_dfu_svci.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\components\libraries\bootloader\dfu\nrf_dfu_svci.c</FilePath>
             </File>
           </Files>
         </Group>

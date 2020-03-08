@@ -40,7 +40,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_sdm.h"
 #include "app_util.h"
 
@@ -54,18 +54,18 @@ uint32_t nrf_dfu_svci_vector_table_set(void)
 
     if (bootloader_addr != 0xFFFFFFFF)
     {
-        NRF_LOG_INFO("Setting vector table to bootloader: 0x%08x", bootloader_addr);
+        //NRF_LOG_INFO("Setting vector table to bootloader: 0x%08x", bootloader_addr);
         err_code = sd_softdevice_vector_table_base_set(bootloader_addr);
         if (err_code != NRF_SUCCESS)
         {
-            NRF_LOG_ERROR("Failed running sd_softdevice_vector_table_base_set");
+            //NRF_LOG_ERROR("Failed running sd_softdevice_vector_table_base_set");
             return err_code;
         }
 
         return NRF_SUCCESS;
     }
 
-    NRF_LOG_ERROR("No bootloader was found");
+    //NRF_LOG_ERROR("No bootloader was found");
     return NRF_ERROR_NO_MEM;
 }
 
@@ -74,11 +74,11 @@ uint32_t nrf_dfu_svci_vector_table_unset(void)
 {
     uint32_t err_code;
 
-    NRF_LOG_INFO("Setting vector table to main app: 0x%08x", APP_START_ADDR);
+    //NRF_LOG_INFO("Setting vector table to main app: 0x%08x", APP_START_ADDR);
     err_code = sd_softdevice_vector_table_base_set(APP_START_ADDR);
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Failed running sd_softdevice_vector_table_base_set");
+       // NRF_LOG_ERROR("Failed running sd_softdevice_vector_table_base_set");
         return err_code;
     }
 
